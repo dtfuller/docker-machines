@@ -1,0 +1,5 @@
+# ignore vim-generated termporal files
+*.swo
+*.swa
+*.swp
+*~
