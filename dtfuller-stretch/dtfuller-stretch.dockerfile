@@ -1,7 +1,6 @@
 FROM debian:stretch-slim 
 USER root
-
-# to-do: aún no se logran  mostrar los colores ni configuraciones extras que se le están haciendo a bash
+ENV SSH_TTY=1
 
 # install base common utilities. 
 RUN apt-get update && apt-get install -y apt-utils vim git 

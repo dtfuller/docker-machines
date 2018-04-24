@@ -1,2 +1,2 @@
 #!/bin/sh
-docker run -i --rm -t dtfuller-stretch-slim
+docker run -i --rm -t dtfuller-stretch
