@@ -13,3 +13,7 @@ RUN echo "\nif [ -e /usr/local/etc/configs.git/dotfiles/.bashrc ]; then \
 RUN echo "\nif [ -e /usr/local/etc/configs.git/dotfiles/.bash_profile ]; then \
           \n    source /usr/local/etc/configs.git/dotfiles/.bash_profile \
           \nfi" >> /etc/profile; 
+
+RUN rm /etc/skel/.bashrc /etc/skel/.profile
+RUN ln -s /usr/local/etc/configs.git/dotfiles/.bashrc /etc/skel/.bashrc
+RUN ln -s /usr/local/etc/configs.git/dotfiles/.bash_profile /etc/skel/.bash_profile
