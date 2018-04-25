@@ -3,7 +3,7 @@ USER root
 ENV SSH_TTY=1
 
 # install base common utilities. 
-RUN apt-get update && apt-get install -y apt-utils vim git 
+RUN apt-get update && apt-get install -y apt-utils vim git man
 RUN git clone https://github.com/dtfuller/configs.git /usr/local/etc/configs.git
 RUN ln -s /usr/local/etc/configs.git/dotfiles/.vimrc /etc/vim/vimrc.local 
 RUN ln -rs /usr/local/etc/configs.git/dotfiles/.vim/* /etc/vim/
