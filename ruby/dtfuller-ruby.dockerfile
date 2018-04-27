@@ -1,4 +1,4 @@
-FROM dtfuller-stretch:latest 
+FROM dtfuller/stretch-slim:0.1
 USER root
 SHELL ["/bin/bash", "-c"]
 
@@ -27,4 +27,5 @@ RUN /bin/bash -c ". /etc/profile.d/rbenv.sh \
                     && rbenv install 2.5.0 \
                     && rbenv global 2.5.0" 
 
-ENTRYPOINT ["keepbusy"]
+EXPOSE 3000
+ENTRYPOINT ["keepbusy"] # start containers in "server mode".
