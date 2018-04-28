@@ -21,7 +21,6 @@ RUN /bin/bash -c "useradd -m postgres \
 USER postgres
 WORKDIR /home/postgres
 
-
 # initialize db.
 EXPOSE 5432
 RUN /usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data
