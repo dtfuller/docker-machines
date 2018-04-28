@@ -25,4 +25,4 @@ WORKDIR /home/postgres
 # initialize db.
 EXPOSE 5432
 RUN /usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data
-ENTRYPOINT ["/usr/local/pgsql/bin/postgres", "-D", "/usr/local/pgsql/data"]
+ENTRYPOINT ["/usr/local/pgsql/bin/postgres", "-D", "/usr/local/pgsql/data", "-p", "5432"]
