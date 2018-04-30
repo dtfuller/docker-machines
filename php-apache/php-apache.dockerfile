@@ -17,6 +17,9 @@ ENV APACHE_RUN_GROUP=www
 ENV APACHE_LOG_DIR=/var/log/apache2/
 ENV APACHE_PID_FILE="/home/www/apache.pid"
 
+RUN /bin/bash -c "cd /etc/apache2/sites-enabled && \
+                    a2dissite * && \
+                    cd /etc/apache2/sites-available && \ 
+                    a2ensite *"
 EXPOSE 80 443
-RUN apache2ctl start 
-ENTRYPOINT ["keepbusy"]
+ENTRYPOINT ["apache2ctl", "-D", "FOREGROUND", "-k", "start"]
