@@ -3,3 +3,6 @@
 *.swa
 *.swp
 *~
+
+# Ignore helper scripts used in dev processes.
+*.workflow
