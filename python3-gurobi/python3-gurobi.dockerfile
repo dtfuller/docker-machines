@@ -12,13 +12,19 @@ USER python
 WORKDIR /usr/local/share/gurobi800/linux64
 RUN /bin/bash -c ". ~/.bash_profile && \ 
                    $(pyenv which python3) ./setup.py install"
+RUN mkdir /home/python/gurobi-license
+
+ENV GRB_LICENSE_FILE="/home/python/gurobi-license/gurobi.lic"
+ENV GUROBI_HOME="/usr/local/share/gurobi800/linux64/"
+ENV PATH="$PATH":"$GUROBI_HOME"/bin
 
 USER root
 
 RUN echo '\n\n \
-export GUROBI_HOME="/usr/local/share/gurobi800/linux64/"   \n\
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH":$GUROBI_HOME/lib \n\
-export PATH="$PATH":$GUROBI_HOME/bin                         \
+export GRB_LICENSE_FILE="/home/python/gurobi-license/gurobi.lic" \n\
+export GUROBI_HOME="/usr/local/share/gurobi800/linux64/"        \n\
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH":$GUROBI_HOME/lib      \n\
+export PATH="$PATH":$GUROBI_HOME/bin                              \
 ' >> /etc/profile.d/.pyenv
 
 USER python
