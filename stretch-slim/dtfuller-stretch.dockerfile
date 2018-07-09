@@ -19,3 +19,6 @@ ADD ./keepbusy /usr/local/bin
 RUN rm /etc/skel/.bashrc /etc/skel/.profile
 RUN ln -s /usr/local/etc/configs.git/dotfiles/.bashrc /etc/skel/.bashrc
 RUN ln -s /usr/local/etc/configs.git/dotfiles/.bash_profile /etc/skel/.bash_profile
+
+# Mount or copy/add entrypoint.sh
+ENTRYPOINT /bin/bash -c "if [[ -x /usr/local/src/entrypoint.sh ]]; then /usr/local/src/entrypoint.sh; fi"
