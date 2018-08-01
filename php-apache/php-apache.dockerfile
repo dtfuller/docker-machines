@@ -9,16 +9,16 @@ RUN mkdir -p /var/log/apache2/ \
         && rm /var/log/apache2/error.log \
         && ln -s /dev/stdout /var/log/apache2/error.log
 
-RUN useradd -m www
-RUN mkdir -p /home/www/html && chown -R www:www /home/www/html 
+# RUN useradd -m www-data
+RUN mkdir -p /home/www-data/html && chown -R www-data:www-data /home/www-data/html 
 RUN mkdir -p /var/log/apache2
 RUN chmod 755 /var/log/apache2
 
-ENV APACHE_RUN_DIR="/home/www/html"
-ENV APACHE_RUN_USER=www
-ENV APACHE_RUN_GROUP=www
+ENV APACHE_RUN_DIR="/home/www-data/html"
+ENV APACHE_RUN_USER=www-data
+ENV APACHE_RUN_GROUP=www-data
 ENV APACHE_LOG_DIR=/var/log/apache2/
-ENV APACHE_PID_FILE="/home/www/apache.pid"
+ENV APACHE_PID_FILE="/home/www-data/apache.pid"
 
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
